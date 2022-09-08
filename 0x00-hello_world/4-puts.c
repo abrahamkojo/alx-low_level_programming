@@ -1,26 +1,9 @@
-/*
- *
- *  * File: 4-puts.c
- *
- *   * Auth: Abraham k. Adusei 
- *
- *    * <kojo123ab@gmail.com>
- *
- *     */
-
 #include <stdio.h>
 /**
- *
- *  * main - Prints "Programming is like building a multilingual
- *
- *   *                puzzle, followed by a new line.
- *
- *    *
- *
- *     * Return: Always 0.
- *
- *      */
-
+ * main - Entry poin
+ * 
+ * Return: Always 0 (Success) 
+ */
 int main(void)
 {
 puts("\"Programming is like building a multilingual puzzle");
