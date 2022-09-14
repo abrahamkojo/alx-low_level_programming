@@ -5,7 +5,7 @@
  * @n: the number of which the sign will be printed 
  *
  * Description: prints all lowercase letters
- * Return: 1 if number is grater than zero, 0 if number is zero, -1 if number is less than zero.
+ * Return: 1 if number is grater than zero, 0 
  */
 int print_sign(int n)
 {
