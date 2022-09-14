@@ -2,7 +2,7 @@
 
 /**
  * main - check if a character is alphabet 
- *
+ * @c: type int character
  * Return: 1 if character is letter, lowercase,or uppercase, 0 when not
  */
 int _isalpha(int c)
