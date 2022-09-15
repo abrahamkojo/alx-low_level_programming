@@ -8,8 +8,6 @@
 /**
  * print_number - Prints an integer.
  * @n: The integer to be printed.
- * 
- * Return: nothing
  */
 void print_number(int n)
 {
