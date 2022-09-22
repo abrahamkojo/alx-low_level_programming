@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "main.h"
 
 /**
@@ -8,21 +7,15 @@
  * Return: Always 0.
  */
 
-char *_strcat(char *dest, const char *src)
+char *strcat(char *dest, const char *src)
 {
-int i = 0, j = 0;
+	int index = 0, dest_len = 0;
 
-	while (dest[i] != '\0')
-	{
-		i++;
-	}
-	while (src[j] != '\0')
-	{
-		dest[i] = src[j];
-		j++;
-		i++;
-	}
+	while (dest[index++])
+		dest_len++;
 
-	dest[i] = '\0';
+	for (index = 0; src[index]; index++)
+		dest[dest_len++] = src[index];
+
 	return (dest);
 }
