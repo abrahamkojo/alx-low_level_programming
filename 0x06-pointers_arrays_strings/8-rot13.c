@@ -1,4 +1,9 @@
-#include "main.h"
+/*
+ * File: 8-rot13.c
+ * Auth: Brennan D Baraban
+ */
+
+#include "holberton.h"
 
 /**
  * rot13 - Encodes a string using rot13.
