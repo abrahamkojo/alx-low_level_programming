@@ -13,19 +13,16 @@ int count;
 
 while (*s != '\0')
 {
-	while (*accept != '\0')
-	{
-		if (*s == *accept)
-			break;
-			count++;
-			accept++;
-
-			s++;
-
-	}
-if (*accept == '\0')
-	break;
-
+while (*accept != '\0')
+{
+if (*s == *accept)
+break;
+count++;
+accept++;
+s++;
 }
-		return (count + 1);
+if (*accept == '\0')
+break;
+}
+return (count + 1);
 }
