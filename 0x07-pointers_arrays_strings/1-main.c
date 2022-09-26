@@ -10,21 +10,21 @@
  */
 void simple_print_buffer(char *buffer, unsigned int size)
 {
-    unsigned int w;
+    unsigned int i
 
-    w = 0;
-    while (w < size)
+    i = 0;
+    while (i < size)
     {
-        if (w % 10)
+        if (i % 10)
         {
             printf(" ");
         }
-        if (!(w % 10) && w)
+        if (!(i % 10) && i)
         {
             printf("\n");
         }
-        printf("0x%02x", buffer[w]);
-        w++;
+        printf("0x%02x", buffer[i]);
+        i++;
     }
     printf("\n");
 }
