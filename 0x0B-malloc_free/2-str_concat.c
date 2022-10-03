@@ -2,51 +2,38 @@
 #include <stdlib.h>
 
 /**
- * str_concat - function to concatene two strings
- * @s1: the first string
- * @s2: the second string
+ * str_concat - Concatenates two strings.
+ * @s1: The string to be concatenated upon.
+ * @s2: The string to be concatenated to s1.
  *
- * Return: a pointer to tha allocated memory Area.
+ * Return: If concatenation fails - NULL.
+ *         Otherwise - a pointer the newly-allocated space in memory
+ *                     containing the concatenated strings.
  */
 char *str_concat(char *s1, char *s2)
 {
-int size1 = 0;
-int size2 = 0;
-int i, j;
-char *p;
+	char *concat_str;
+	int index, concat_index = 0, len = 0;
 
-if (s1 == NULL)
-	s1 = "";
-if (s2 == NULL)
-	s2 = "";
+	if (s1 == NULL)
+		s1 = "";
 
-/* calculate the length of string 1*/
-while (*(s1 + size1))
-	size1++;
-/* calculate the length of the string 2 */
-while (*(s2 + size2))
-	size2++;
+	if (s2 == NULL)
+		s2 = "";
 
-/* a pointer pointed to the memory area allocation*/
-p = malloc((size1 + size2) + 1);
+	for (index = 0; s1[index] || s2[index]; index++)
+		len++;
 
-if (p == NULL)
-	return (NULL);
-i = 0;
-/* copying the first string on the allocated memory*/
-while (i < size1)
-{
-	*(p + i) = *(s1 + i);
-			i++;
-}
+	concat_str = malloc(sizeof(char) * len);
 
-/* copying the second string */
-j = 0;
-while (j <= size2)
-{
-	*(p + j + size1) = *(s2 + j);
-		j++;
-}
-/* the program return a pointer pointed */
-return (p);
+	if (concat_str == NULL)
+		return (NULL);
+
+	for (index = 0; s1[index]; index++)
+		concat_str[concat_index++] = s1[index];
+
+	for (index = 0; s2[index]; index++)
+		concat_str[concat_index++] = s2[index];
+
+	return (concat_str);
 }
