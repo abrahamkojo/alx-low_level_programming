@@ -1,97 +1,92 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <ctype.h>
 /**
-* _isNum - check if is a number
-*@num: string to check
-*Return: 1 is numm, 0 not num
-*/
-int _isNum(char *num)
+ * _isnumber - checks if string is number
+ *
+ * @s: string
+ *
+ * Return: 1 if number, 0 if not
+ */
+int _isnumber(char *s)
 {
-	int i;
+	int i, check, d;
 
-	for (i = 0; num[i] != '\0'; i++)
+	d = 0, check = 1;
+	for (i = 0; *(s + i) != 0; i++)
 	{
-		if (num[i] < '0' || num[i] > '9')
-			return (0);
-	}
-	return (1);
-}
-
-/**
-* *_memset - copies a character to the firstn characters of the string pointed
-*@s: original string
-*@b: value to remplace
-*@n: number of bytes
-*Return: s (string modify)
-*/
-char *_memset(char *s, char b, unsigned int n)
-{
-	unsigned int i;
-
-	for (i = 0; i < n; i++)
-		s[i] = b;
-	return (s);
-}
-
-/**
-* _strlen - returns the lenght of a string
-*@s: poiter of character
-*Return: the length of a string
-*/
-int _strlen(char *s)
-{
-	int len;
-
-	len = 0;
-	while (*(s + len) != '\0')
-		len++;
-	return (len);
-}
-
-/**
-* main - multiple 2 positive numbers
-*@argc: argument counter
-*@argv: number to multiply
-*Return: 0 (success)
-*/
-int main(int argc, char *argv[])
-{
-	int length, c, prod, i, j, l1, l2;
-	int *res;
-
-	if ((argc != 3 || !(_isNum(argv[1]))) || !(_isNum(argv[2])))
-		puts("Error"), exit(98);
-	l1 = _strlen(argv[1]), l2 = _strlen(argv[2]);
-	length = l1 + l2;
-	res = calloc(length, sizeof(int *));
-	if (res == NULL)
-		puts("Error"), exit(98);
-	for (i = l2 - 1; i > -1; i--)
-	{
-		c = 0;
-		for (j = l1; j > -1; j--)
+		d = isdigit(*(s + i));
+		if (d == 0)
 		{
-			prod = (argv[2][i] - '0') * (argv[1][j] - '0');
-			c = (prod / 10);
-			res[(i + j) + 1] += (prod % 10);
-			if (res[(i + j) + 1] > 9)
-			{
-				res[i + j] += res[(i + j) + 1] / 10;
-				res[(i + j) + 1] = res[(i + j) + 1] % 10;
-			}
-			res[(i + j) + 1] += c;
+			check = 0;
+			break;
 		}
 	}
+	return (check);
+}
 
-	if (res[0] == 0)
-		i = 1;
-	else
-		i = 0;
-	for (; i < length; i++)
-		printf("%d", res[i]);
+/**
+ * _callocX - reserves memory initialized to 0
+ *
+ * @nmemb: # of bytes
+ *
+ * Return: pointer
+ */
+char *_callocX(unsigned int nmemb)
+{
+	unsigned int i;
+	char *p;
 
+	p = malloc(nmemb + 1);
+	if (p == 0)
+		return (0);
+	for (i = 0; i < nmemb; i++)
+		p[i] = '0';
+	p[i] = '\0';
+	return (p);
+}
+
+/**
+ * main - program that multiplies two positive numbers.
+ *
+ * @argc: count
+ * @argv: vector
+ * Return: output
+ */
+int main(int argc, char **argv)
+{
+	int i, j, l1, l2, lful, mul, add, ten, ten2, tl, zer = 0;
+	char *res;
+
+	if (argc != 3 || _isnumber(argv[1]) == 0 || _isnumber(argv[2]) == 0)
+		printf("Error\n"), exit(98);
+	if (atoi(argv[1]) == 0 || atoi(argv[2]) == 0)
+		printf("0\n"), exit(0);
+	l1 = strlen(argv[1]), l2 = strlen(argv[2]);
+	lful = l1 + l2;
+	res = _callocX(lful);
+	if (res == 0)
+		printf("Error\n"), exit(98);
+	for (i = l2 - 1; i >= 0; i--)
+	{
+		ten = 0, ten2 = 0;
+		for (j = l1 - 1; j >= 0; j--)
+		{
+			tl = i + j + 1;
+			mul = (argv[1][j] - '0') * (argv[2][i] - '0') + ten;
+			ten =  mul / 10;
+			add = (res[tl] - '0') + (mul % 10) + ten2;
+			ten2 = add / 10;
+			res[tl] = (add % 10) + '0';
+		}
+		res[tl - 1] = (ten + ten2) + '0';
+	}
+	if (res[0] == '0')
+		zer = 1;
+	for (; zer < lful; zer++)
+		printf("%c", res[zer]);
 	printf("\n");
 	free(res);
 	return (0);
