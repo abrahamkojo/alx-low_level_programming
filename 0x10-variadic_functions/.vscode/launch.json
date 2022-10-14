@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Hp/prj/ALX PROJECT COURSE/alx assignment/alx-low_level_programming/0x0E-structures_typedef",
-      "program": "c:/Users/Hp/prj/ALX PROJECT COURSE/alx assignment/alx-low_level_programming/0x0E-structures_typedef/build/Debug/outDebug",
+      "cwd": "c:/Users/Hp/prj/ALX PROJECT COURSE/alx assignment/alx-low_level_programming/0x10-variadic_functions",
+      "program": "c:/Users/Hp/prj/ALX PROJECT COURSE/alx assignment/alx-low_level_programming/0x10-variadic_functions/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
